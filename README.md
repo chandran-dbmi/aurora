@@ -219,6 +219,41 @@ total 2.4G
 2. We need to know if the annotations will be provided for them, or we need to annotated it by ourselves.
 
 ### 1.d. Variant calling
+The variant calling files include the CRAM files and tsv files. They can be seen as below:
 **1.d.i. Files**  
+```
+achakka: genome$ pwd
+/pghbio/aurora/data/received/genome
+achakka: genome$ ls 
+0317081bc63e4d57b87f6bb3bac667c1.cram      51914196bd1548019ba1f3162701db97.cram.md5  all_sequences.fa                            AUR-AD9I-TTM3-A-1-1-D-A530-40.variants.tsv
+0317081bc63e4d57b87f6bb3bac667c1.cram.md5  56490b4626d24d15a0ffd76729925312.cram      AUR-AD9E-TTM1-A-1-1-D-A530-40.variants.tsv  AUR-AD9I-TTM3-A-1-2-D-A538-40.variants.tsv
+0b78216a25544aebb3021ff55ff02f1c.cram      56490b4626d24d15a0ffd76729925312.cram.md5  AUR-AD9E-TTM1-A-1-2-D-A530-40.variants.tsv  b06e22b78c0d4e84b5acea117ec863fd.cram
+0b78216a25544aebb3021ff55ff02f1c.cram.md5  5db71ef95b9a446aa8598fa8f5ecb29a.cram      AUR-AD9E-TTM1-A-2-1-D-A530-40.variants.tsv  b06e22b78c0d4e84b5acea117ec863fd.cram.md5
+16a9cf8ad6a84ae7a336d36859f3a0e0.cram      5db71ef95b9a446aa8598fa8f5ecb29a.cram.md5  AUR-AD9E-TTM2-A-1-1-D-A538-40.variants.tsv  b2e664b19fc44e3cb89feadc8996ea56.cram
+16a9cf8ad6a84ae7a336d36859f3a0e0.cram.md5  6ebcdafea0724af39c086ce678c6af2a.cram      AUR-AD9E-TTM2-A-1-2-D-A530-40.variants.tsv  b2e664b19fc44e3cb89feadc8996ea56.cram.md5
+2087de6ced5f430e99b2bafbaf685d8f.cram      6ebcdafea0724af39c086ce678c6af2a.cram.md5  AUR-AD9E-TTM4-A-1-1-D-A530-40.variants.tsv  ba6481a3985e474bbdb564f1cfc94a02.cram
+2087de6ced5f430e99b2bafbaf685d8f.cram.md5  746d81b30dd245af89a08ed25da7817f.cram      AUR-AD9E-TTM4-A-1-2-D-A530-40.variants.tsv  ba6481a3985e474bbdb564f1cfc94a02.cram.md5
+239365a084444321b1964ce0a63b1eb8.cram      746d81b30dd245af89a08ed25da7817f.cram.md5  AUR-AD9E-TTM4-A-2-1-D-A538-40.variants.tsv  bcb43fee90c8489c800aa54de55c7fa0.cram
+239365a084444321b1964ce0a63b1eb8.cram.md5  86f8459312ea425b9f1acacb02784b79.cram      AUR-AD9G-TTM1-A-1-1-D-A530-40.variants.tsv  bcb43fee90c8489c800aa54de55c7fa0.cram.md5
+296e035b327f45af8b83aaf207c2531c.cram      86f8459312ea425b9f1acacb02784b79.cram.md5  AUR-AD9G-TTM1-A-1-2-D-A530-40.variants.tsv  bddfd480a3774b36912466f06b3530c0.cram
+296e035b327f45af8b83aaf207c2531c.cram.md5  88b7a03854e7454893ed2a6d9c333bce.cram      AUR-AD9G-TTM1-A-1-2-D-A538-40.variants.tsv  bddfd480a3774b36912466f06b3530c0.cram.md5
+346820fcce614aecbfa9699176dede5f.cram      88b7a03854e7454893ed2a6d9c333bce.cram.md5  AUR-AD9G-TTM1-A-2-1-D-A530-40.variants.tsv  c5f2947afa00408ba52ecd0a098c6e54.cram
+346820fcce614aecbfa9699176dede5f.cram.md5  89a1d908f0d24fcaa2b9ba92a3366ac1.cram      AUR-AD9G-TTM2-A-1-1-D-A530-40.variants.tsv  c5f2947afa00408ba52ecd0a098c6e54.cram.md5
+3bfabd68ad90411781ef7cfa3d93a58a.cram      89a1d908f0d24fcaa2b9ba92a3366ac1.cram.md5  AUR-AD9G-TTM2-A-1-2-D-A538-40.variants.tsv  df20f068791946e8be98a48511983624.cram
+3bfabd68ad90411781ef7cfa3d93a58a.cram.md5  8f93a33847ac4f20ac15046c7bf933fe.cram      AUR-AD9G-TTM2-A-2-1-D-A538-40.variants.tsv  df20f068791946e8be98a48511983624.cram.md5
+4b439e193724433f80f5e27c9df1ac25.cram      8f93a33847ac4f20ac15046c7bf933fe.cram.md5  AUR-AD9G-TTM3-A-1-1-D-A530-40.variants.tsv  e97d70a106f748a6997a0a77e0662bc4.cram
+4b439e193724433f80f5e27c9df1ac25.cram.md5  a505504aed6b48d687835fa23b105538.cram      AUR-AD9G-TTM3-A-1-2-D-A530-40.variants.tsv  e97d70a106f748a6997a0a77e0662bc4.cram.md5
+4b7671197edf47f9a48ce2850c23c639.cram      a505504aed6b48d687835fa23b105538.cram.md5  AUR-AD9G-TTM3-A-1-2-D-A538-40.variants.tsv  f86b0de03e2640e9988c8ab04646750f.cram
+4b7671197edf47f9a48ce2850c23c639.cram.md5  a8a8c5c47d834418be6b2908b7f1c52f.cram      AUR-AD9G-TTP1-B-4-0-D-A586-40.variants.tsv  f86b0de03e2640e9988c8ab04646750f.cram.md5
+51914196bd1548019ba1f3162701db97.cram      a8a8c5c47d834418be6b2908b7f1c52f.cram.md5  AUR-AD9G-TTP1-B-5-0-D-A586-40.variants.tsv
+
+achakka: genome$ ls *.cram | wc -l
+30
+achakka: genome$ ls *.tsv | wc -l
+22
+
+```
 **1.d.ii. Issues**  
+1. The number of cram files and tsv files do not match.
+
 ## 2. cBio
