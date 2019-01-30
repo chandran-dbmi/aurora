@@ -5,11 +5,12 @@ The data transferred can be found under:
 `/pghbio/aurora/data/received`
 
 We have received four different analysis so far:  
-a. Biospecimen  
-b. RNA-Seq  
-c. Methylation  
+a. Biospecimen *(55 xml files)*  
+b. RNA-Seq *(_rna/_: 150 fastqs, 75 BAMs, 75 quant.sf and _rna2/_: 324 fastqs, 162 BAMs)*  
+c. Methylation *(Level1: 396 idats, Level2: 198 tsv, Level3: 198 tsv, Level4: 1 tsv)*  
 d. Variant calling  
 
+They can be seen in the following folders:
 ```
 achakka: received$ pwd
 /pghbio/aurora/data/received
@@ -22,6 +23,7 @@ drwxrwxr-x+ 3 ropelews mc5fp7p  50K Dec 11 21:35 rna
 drwxr-xr-x+ 2 ropelews mc5fp7p 130K Jan 25 20:19 rna2
 ```
 
+A more details description of the files is given below.
 ### 1.a. Biospecimen
 The biospecimen folder contains all the xml details of the patient samples. The xml files have been organized in two folder and in total we have *55 xml* files.
 
