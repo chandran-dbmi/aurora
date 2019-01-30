@@ -27,7 +27,7 @@ A more details description of the files is given below.
 ### 1.a. Biospecimen
 The biospecimen folder contains all the xml details of the patient samples. The xml files have been organized in two folder and in total we have *55 xml* files.
 
-**1.a.i. Files** 
+**1.a.i. Files**  
 The files are located in the following directories:
 ```
 achakka: biospecimen$ pwd
@@ -67,12 +67,12 @@ achakka: biospecimen$ ls */*.xml | wc -l
 55
 
 ```
-**1.a.ii. Issues**
+**1.a.ii. Issues**  
 None
 
 ### 1.b. RNA-Seq
 The RNA-Seq files were submitted in two different folders: `rna/` and `rna2/`.
-**1.b.i. Files** 
+**1.b.i. Files**  
 Under `rna/`, we can find the following files:
 ```
 achakka: rna$ pwd
@@ -133,14 +133,14 @@ Rscript $scriptdir/normalizeGenes.R $outdir/Salmon_out/salmon_gene.txt $outdir/S
 rm -rfv $outdir/working/* # cleanup
 rm $outdir/STAR_Aligned.toTranscriptome.out.bam && rm $outdir/STAR_Aligned.out.bam # cleanup
 ```
-**1.b.ii. Issues** 
+**1.b.ii. Issues**  
 1. Only transcript level expression values were provided.
 2. We haven't received isoform and gene level files as described in the workflow yet.
 
 ### 1.c. Methylation
-**1.c.i. Files** 
-**1.c.ii. Issues** 
+**1.c.i. Files**  
+**1.c.ii. Issues**  
 ### 1.d. Variant calling
-**1.d.i. Files** 
-**1.d.ii. Issues** 
+**1.d.i. Files**  
+**1.d.ii. Issues**  
 ## 2. cBio
