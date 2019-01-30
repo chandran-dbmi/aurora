@@ -66,6 +66,9 @@ achakka: biospecimen$ ls */*.xml | wc -l
 55
 
 ```
+#### Issues
+None
+
 ### 1.b. RNA-Seq
 The RNA-Seq files were submitted in two different folders: `rna/` and `rna2/`.
 
@@ -129,9 +132,12 @@ Rscript $scriptdir/normalizeGenes.R $outdir/Salmon_out/salmon_gene.txt $outdir/S
 rm -rfv $outdir/working/* # cleanup
 rm $outdir/STAR_Aligned.toTranscriptome.out.bam && rm $outdir/STAR_Aligned.out.bam # cleanup
 ```
+#### Issues
+1. Only transcript level expression values were provided.
+2. We haven't received isoform and gene level files as described in the workflow yet.
 
 ### 1.c. Methylation
-
+#### Issues
 ### 1.d. Variant calling
-
+#### Issues
 ## 2. cBio
