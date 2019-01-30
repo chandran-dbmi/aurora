@@ -25,7 +25,7 @@ drwxr-xr-x+ 2 ropelews mc5fp7p 130K Jan 25 20:19 rna2
 
 A more details description of the files is given below.
 ### 1.a. Biospecimen
-The biospecimen folder contains all the xml details of the patient samples. The xml files have been organized in two folder and in total we have *55 xml* files.
+The biospecimen folder contains all the xml details of the patient samples. The xml files have been organized in two folder and in total we have *55 xml* files.  
 
 **1.a.i. Files**  
 The files are located in the following directories:
@@ -138,8 +138,86 @@ rm $outdir/STAR_Aligned.toTranscriptome.out.bam && rm $outdir/STAR_Aligned.out.b
 2. We haven't received isoform and gene level files as described in the workflow yet.
 
 ### 1.c. Methylation
+Four level of files were provided for Methylation data. 
 **1.c.i. Files**  
+The files are located in the following directories:
+```
+achakka: VARI_MethylationEPIC$ pwd
+/pghbio/aurora/data/received/meth/VARI_MethylationEPIC
+achakka: VARI_MethylationEPIC$ ls -lh
+total 502M
+-rwxr-xr--+ 1 ropelews mc5fp7p 178K Sep 23 08:47 Data.description_180921.pdf
+-rwxr-xr--+ 1 ropelews mc5fp7p 230M Sep 14 10:38 EPIC.hg38.manifest.gencode.v22.tsv.gz
+-rwxr-xr--+ 1 ropelews mc5fp7p 272M Sep 14 10:38 EPIC.hg38.manifest.tsv.gz
+-r--r-xr--+ 1 ropelews mc5fp7p  194 Sep 23 11:00 @MD5_checksum.txt
+drwxr-xr-x+ 6 ropelews mc5fp7p  12K Sep 23 11:00 MethylationEPIC__Current
+```
+
+All the levels can be seen as follows:
+```
+achakka: MethylationEPIC__Current$ ls -lh
+total 140K
+-r--r-xr--+ 1 ropelews mc5fp7p  53 Sep 23 11:00 @MD5_checksum.txt
+drwxr-xr-x+ 5 ropelews mc5fp7p 12K Sep 23 11:03 MethylationEPIC_Level_1.Batch.Version
+drwxr-xr-x+ 5 ropelews mc5fp7p 12K Sep 23 11:04 MethylationEPIC_Level_2.Batch.Version
+drwxr-xr-x+ 5 ropelews mc5fp7p 12K Sep 23 11:04 MethylationEPIC_Level_3.Batch.Version
+drwxr-xr-x+ 2 ropelews mc5fp7p 12K Sep 23 11:02 MethylationEPIC_Level_4.Version
+-rwxr-xr--+ 1 ropelews mc5fp7p 24K Sep 21 15:34 Sample.mapping.tsv
+
+achakka: MethylationEPIC__Current$ ls -lh MethylationEPIC_Level_1.Batch.Version/
+total 77K
+drwxr-xr-x+ 2 ropelews mc5fp7p 16K Sep 23 11:00 MethylationEPIC_Level_1.1.0
+drwxr-xr-x+ 2 ropelews mc5fp7p 13K Sep 23 11:00 MethylationEPIC_Level_1.2.0
+drwxr-xr-x+ 2 ropelews mc5fp7p 49K Sep 23 11:00 MethylationEPIC_Level_1.3.0
+achakka: MethylationEPIC__Current$ ls MethylationEPIC_Level_1.Batch.Version/*/*.idat | wc -l
+396
+
+achakka: MethylationEPIC__Current$ ls -lh MethylationEPIC_Level_2.Batch.Version/
+total 52K
+drwxr-xr-x+ 2 ropelews mc5fp7p 14K Sep 23 11:01 MethylationEPIC_Level_2.1.0
+drwxr-xr-x+ 2 ropelews mc5fp7p 12K Sep 23 11:01 MethylationEPIC_Level_2.2.0
+drwxr-xr-x+ 2 ropelews mc5fp7p 27K Sep 23 11:01 MethylationEPIC_Level_2.3.0
+achakka: MethylationEPIC__Current$ ls -lh MethylationEPIC_Level_2.Batch.Version/* | head
+MethylationEPIC_Level_2.Batch.Version/MethylationEPIC_Level_2.1.0:
+total 1.2G
+-rw-r-xr--+ 1 ropelews mc5fp7p  30M Sep 23 10:00 AUR-AD9E-TTM1-A-1-1-D-A531-37_level_2.1.0.tsv
+-rw-r-xr--+ 1 ropelews mc5fp7p  30M Sep 23 10:00 AUR-AD9E-TTM1-A-1-2-D-A531-37_level_2.1.0.tsv
+-rw-r-xr--+ 1 ropelews mc5fp7p  30M Sep 23 10:00 AUR-AD9E-TTM1-A-2-1-D-A531-37_level_2.1.0.tsv
+-rw-r-xr--+ 1 ropelews mc5fp7p  30M Sep 23 10:00 AUR-AD9E-TTM2-A-1-1-D-A531-37_level_2.1.0.tsv
+-rw-r-xr--+ 1 ropelews mc5fp7p  30M Sep 23 10:00 AUR-AD9E-TTM2-A-1-2-D-A531-37_level_2.1.0.tsv
+-rw-r-xr--+ 1 ropelews mc5fp7p  30M Sep 23 10:00 AUR-AD9E-TTM4-A-1-1-D-A531-37_level_2.1.0.tsv
+-rw-r-xr--+ 1 ropelews mc5fp7p  30M Sep 23 10:00 AUR-AD9E-TTM4-A-1-2-D-A531-37_level_2.1.0.tsv
+-rw-r-xr--+ 1 ropelews mc5fp7p  30M Sep 23 10:00 AUR-AD9E-TTM4-A-2-1-D-A531-37_level_2.1.0.tsv
+achakka: MethylationEPIC__Current$ ls -lh MethylationEPIC_Level_2.Batch.Version/*/*.tsv | wc -l
+198
+
+achakka: MethylationEPIC__Current$ ls -lh MethylationEPIC_Level_3.Batch.Version/
+total 52K
+drwxr-xr-x+ 2 ropelews mc5fp7p 14K Sep 23 11:01 MethylationEPIC_Level_3.1.0
+drwxr-xr-x+ 2 ropelews mc5fp7p 12K Sep 23 11:02 MethylationEPIC_Level_3.2.0
+drwxr-xr-x+ 2 ropelews mc5fp7p 27K Sep 23 11:02 MethylationEPIC_Level_3.3.0
+achakka: MethylationEPIC__Current$ ls -lh MethylationEPIC_Level_3.Batch.Version/* | head
+MethylationEPIC_Level_3.Batch.Version/MethylationEPIC_Level_3.1.0:
+total 969M
+-rw-r-xr--+ 1 ropelews mc5fp7p  24M Sep 23 10:00 AUR-AD9E-TTM1-A-1-1-D-A531-37_level_3.1.0.tsv
+-rw-r-xr--+ 1 ropelews mc5fp7p  24M Sep 23 10:00 AUR-AD9E-TTM1-A-1-2-D-A531-37_level_3.1.0.tsv
+-rw-r-xr--+ 1 ropelews mc5fp7p  24M Sep 23 10:00 AUR-AD9E-TTM1-A-2-1-D-A531-37_level_3.1.0.tsv
+-rw-r-xr--+ 1 ropelews mc5fp7p  25M Sep 23 10:00 AUR-AD9E-TTM2-A-1-1-D-A531-37_level_3.1.0.tsv
+-rw-r-xr--+ 1 ropelews mc5fp7p  24M Sep 23 10:00 AUR-AD9E-TTM2-A-1-2-D-A531-37_level_3.1.0.tsv
+-rw-r-xr--+ 1 ropelews mc5fp7p  25M Sep 23 10:00 AUR-AD9E-TTM4-A-1-1-D-A531-37_level_3.1.0.tsv
+-rw-r-xr--+ 1 ropelews mc5fp7p  24M Sep 23 10:00 AUR-AD9E-TTM4-A-1-2-D-A531-37_level_3.1.0.tsv
+-rw-r-xr--+ 1 ropelews mc5fp7p  25M Sep 23 10:00 AUR-AD9E-TTM4-A-2-1-D-A531-37_level_3.1.0.tsv
+achakka: MethylationEPIC__Current$ ls -lh MethylationEPIC_Level_3.Batch.Version/*/*.tsv | wc -l
+
+achakka: MethylationEPIC__Current$ ls -lh MethylationEPIC_Level_4.Version/
+total 2.4G
+-r--r-xr--+ 1 ropelews mc5fp7p   64 Sep 23 11:02 @MD5_checksum.txt
+-rwxr-xr--+ 1 ropelews mc5fp7p 2.4G Sep 22 07:09 MethylationEPIC_level_4.0.tsv
+```
 **1.c.ii. Issues**  
+1. The level 4 files provided only the probe id's.
+2. We need to know if the annotations will be provided for them, or we need to annotated it by ourselves.
+
 ### 1.d. Variant calling
 **1.d.i. Files**  
 **1.d.ii. Issues**  
