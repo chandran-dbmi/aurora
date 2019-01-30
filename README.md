@@ -6,7 +6,7 @@ The data transferred can be found under:
 
 We have received four different analysis so far:  
 a. Biospecimen *(55 xml files)*  
-b. RNA-Seq *(_rna/_: 150 fastqs, 75 BAMs, 75 quant.sf and _rna2/_: 324 fastqs, 162 BAMs)*  
+b. RNA-Seq *(**rna/**: 150 fastqs, 75 BAMs, 75 quant.sf and **rna2/**: 324 fastqs, 162 BAMs)*  
 c. Methylation *(Level1: 396 idats, Level2: 198 tsv, Level3: 198 tsv, Level4: 1 tsv)*  
 d. Variant calling  
 
