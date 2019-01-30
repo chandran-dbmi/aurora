@@ -67,7 +67,31 @@ achakka: biospecimen$ ls */*.xml | wc -l
 
 ```
 ### 1.b. RNA-Seq
+The RNA-Seq files were submitted in two different folders: `rna/` and `rna2/`.
 
+Under `rna/`, we can find the following files:
+```
+achakka: rna$ pwd
+/pghbio/aurora/data/received/rna
+achakka: rna$ ls *.bam | wc -l
+75
+achakka: rna$ ls *.quant.sf | wc -l
+75
+achakka: rna$ cd fastq/
+achakka: fastq$ pwd
+/pghbio/aurora/data/received/rna/fastq
+achakka: fastq$ ls *.fastq.gz | wc -l
+150
+```
+Under `rna2/`, we can find the following folders:
+```
+achakka: rna2$ pwd
+/pghbio/aurora/data/received/rna2
+achakka: rna2$ ls *.bam | wc -l
+162
+achakka: rna2$ ls *.fastq.gz | wc -l
+324
+```
 ### 1.c. Methylation
 
 ### 1.d. Variant calling
