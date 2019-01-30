@@ -92,6 +92,44 @@ achakka: rna2$ ls *.bam | wc -l
 achakka: rna2$ ls *.fastq.gz | wc -l
 324
 ```
+
+RNA-Seq workflow was provided by UNC as following:
+```
+refdir=/datastore/nextgenout4/share/labs/bioinformatics/seqware/ref/hg38/
+scriptdir=/datastore/scripts
+outdir=/home/testSample
+picarddir=/datastore/software/picard-tools-1.86
+fq1=/home/test_r1.fastq.gz
+fq2=/home/test_r2.fastq.gz
+
+#STAR:
+STAR --genomeDir $refdir/star_hg38_d1 --readFilesCommand zcat --readFilesIn $fq1 $fq2 --outSAMunmapped Within --outSAMtype BAM Unsorted --quantMode TranscriptomeSAM --runThreadN 16 --outFileNamePrefix $outdir/STAR_ #docker cpus:16 mem:4
+
+#sort bam file
+samtools sort -o $outdir/STAR_Aligned.out.sort.bam $outdir/STAR_Aligned.out.bam #docker mem:8
+
+#index bam file
+samtools index $outdir/STAR_Aligned.out.sort.bam #docker mem:4
+
+#Salmon:
+salmon quant -t $refdir/transcripts_hg38/gencode.v22.pc_transcripts.fa -l IU -a $outdir/STAR_Aligned.toTranscriptome.out.bam -o $outdir/Salmon_out # docker mem:8
+
+#Picard rna-seq QC
+java  -Xms4G -Xmx4G -XX:ParallelGCThreads=1 -jar $picarddir/CollectRnaSeqMetrics.jar REF_FLAT=$refdir/refFlat_hg38.txt RIBOSOMAL_INTERVALS=$refdir/hg38d1_rmsk_rrna.txt STRAND_SPECIFICITY=NONE CHART_OUTPUT=$outdir/RNAqc.pdf METRIC_ACCUMULATION_LEVEL=ALL_READS INPUT=$outdir/STAR_Aligned.out.sort.bam OUTPUT=$outdir/RNAqc.txt VALIDATION_STRINGENCY=SILENT # docker mem:8
+
+#Summarize isoform and gene level
+echo -e "\t$outdir/Salmon_out/quant.sf" > $outdir/Salmon_out/salmon_isoform.txt
+sed -i 's|t/datastore|\t/datastore|g' $outdir/Salmon_out/salmon_isoform.txt
+cut -f 1,5 $outdir/Salmon_out/quant.sf >> $outdir/Salmon_out/salmon_isoform.txt
+
+java -Xmx4G -cp $scriptdir salmonIsoformToGene $outdir/Salmon_out/salmon_isoform.txt $refdir/transcripts_hg38/gencode.v22.annotation.gtf > $outdir/Salmon_out/salmon_gene.txt # docker mem:8
+
+Rscript $scriptdir/normalizeGenes.R $outdir/Salmon_out/salmon_gene.txt $outdir/Salmon_out/salmon_gene_normalized.txt #docker mem:4
+
+rm -rfv $outdir/working/* # cleanup
+rm $outdir/STAR_Aligned.toTranscriptome.out.bam && rm $outdir/STAR_Aligned.out.bam # cleanup
+```
+
 ### 1.c. Methylation
 
 ### 1.d. Variant calling
