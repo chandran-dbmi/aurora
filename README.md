@@ -257,3 +257,22 @@ achakka: genome$ ls *.tsv | wc -l
 1. The number of cram files and tsv files do not match.
 
 ## 2. cBio
+
+## 3. RNA-Seq
+10-30-19
+
+Email from Susana:
+```
+Hi everybody,
+
+I have uploaded the two matrixes and 1 annotation file to genome2 and UPITT BOX:
+
+1.	125 samples, upper quantile normalized,  no other adjustments. File name: "AURORA_UQN_Cluster_SG.5_125"
+2.	125 samples, upper quantile normalized, batch corrected for FFPE vs Fresh. File name: "AURORA_UQN_125_log2_w0_70p_batch_corrected_mdctr.st"
+3.	125 samples. Annotation file with the updated samples names, some clinical data, PAM50 calls and correlation to the centroids. File name: "AURORA_UQN_Cluster_SG.5_125_Annotation".
+
+Please, let me know if you have any questions.
+
+Susana
+```
+
